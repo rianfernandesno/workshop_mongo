@@ -51,6 +51,10 @@ public class User {
         this.email = email;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
