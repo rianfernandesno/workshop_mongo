@@ -1,6 +1,7 @@
 package com.yui.workshopmongo.config;
 
 import com.yui.workshopmongo.models.entities.User;
+import com.yui.workshopmongo.repositories.PostRepository;
 import com.yui.workshopmongo.repositories.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,14 @@ public class TestConfig {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PostRepository postRepository;
+
     @PostConstruct
     public void init(){
 
         userRepository.deleteAll();
+        postRepository.deleteAll();
 
         User maria = new User(null, "Maria Brown", "maria@gmail.com");
         User alex = new User(null, "Alex Green", "alex@gmail.com");
@@ -27,5 +32,7 @@ public class TestConfig {
 
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+
     }
 }
