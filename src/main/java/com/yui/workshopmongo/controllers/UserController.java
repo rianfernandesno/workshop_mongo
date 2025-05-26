@@ -1,5 +1,6 @@
 package com.yui.workshopmongo.controllers;
 
+import com.yui.workshopmongo.models.DTO.PostDTO;
 import com.yui.workshopmongo.models.DTO.UserDTO;
 import com.yui.workshopmongo.service.UserService;
 import org.apache.coyote.Response;
@@ -31,6 +32,13 @@ public class UserController {
         return ResponseEntity.ok().body(dto);
     }
 
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<PostDTO>> getUserPosts(@PathVariable String id){
+        List<PostDTO> list = service.getUserPosts(id);
+        return ResponseEntity.ok().body(list);
+    }
+
     @PostMapping
     public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto){
         dto =  service.insert(dto);
@@ -51,4 +59,6 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
     }
+
+
 }

@@ -1,6 +1,8 @@
 package com.yui.workshopmongo.service;
 
+import com.yui.workshopmongo.models.DTO.PostDTO;
 import com.yui.workshopmongo.models.DTO.UserDTO;
+import com.yui.workshopmongo.models.entities.Post;
 import com.yui.workshopmongo.models.entities.User;
 import com.yui.workshopmongo.repositories.UserRepository;
 import com.yui.workshopmongo.service.exceptios.ResourceNotFoundException;
@@ -28,6 +30,12 @@ public class UserService {
         return new UserDTO(entity);
     }
 
+    public List<PostDTO> getUserPosts(String id){
+        User entity = getEntityById(id);
+        List<PostDTO> list = entity.getPosts().stream().map(x -> new PostDTO(x)).toList();
+        return list;
+    }
+
     public UserDTO insert(UserDTO dto){
         User entity = new User();
         copy(dto, entity);
@@ -50,6 +58,8 @@ public class UserService {
         }
         repository.deleteById(id);
     }
+
+
 
     private User getEntityById(String id){
         Optional<User> result = repository.findById(id);
