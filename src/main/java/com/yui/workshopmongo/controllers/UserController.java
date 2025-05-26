@@ -2,6 +2,7 @@ package com.yui.workshopmongo.controllers;
 
 import com.yui.workshopmongo.models.DTO.UserDTO;
 import com.yui.workshopmongo.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,4 +45,10 @@ public class UserController {
         return  ResponseEntity.ok().body(dto);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }
