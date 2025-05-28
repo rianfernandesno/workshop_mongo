@@ -35,14 +35,15 @@ Sample response:
 ]
 ```
 
-GET /users/{id}
+**GET /users/{id}**
 
 Returns a specific user by ID.
 
-GET /users/{id}/posts
+**GET /users/{id}/posts**
 
 Returns all posts associated with the user identified by the given ID.
-POST /users
+
+**POST /users**
 
 Creates a new user.
 
@@ -55,7 +56,7 @@ Expected body:
 }
 ```
 
-PUT /users/{id}
+**PUT /users/{id}**
 
 Updates the details of an existing user.
 
@@ -67,7 +68,7 @@ Expected body:
   "email": "joaopedro@gmail.com"
 }
 ```
-DELETE /users/{id}
+**DELETE /users/{id}**
 
 Deletes a user by ID.
 
