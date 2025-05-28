@@ -87,7 +87,7 @@ Searches for posts that contain the specified text in their title (case-insensit
 Performs an advanced search for posts that contain the specified text and fall within a given date range.
 
 Example request:
-```json
+```text
 GET /posts/fullsearch?text=travel&start=2024-01-01&end=2024-12-31
 ```
 
